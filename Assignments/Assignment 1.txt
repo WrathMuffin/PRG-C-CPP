@@ -1,0 +1,183 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+class Character
+{
+public:
+    void setName(const string &n) { name = n; }
+    void setHealth(int HP) { health = HP; }
+    void setAttack(int ATK) { attack = ATK; }
+    void setDefense(int DEF) { defense = DEF; }
+
+    void display() const;
+    void takeDamage(int amount) { health -= amount; }
+    int getAttack() const { return attack; }
+    int getHealth() const { return health; }
+    int getDefense() const { return defense; }
+    string getName() const { return name; }
+
+private:
+    string name = "SKIBIDI";
+    int health = 0, attack = 0, defense = 0;
+};
+
+// forward declarations
+void PrintMainMenu();
+void CreateCharacter(string name, int health, int attack, int defense);
+void DrawCharacter(const string &name, int health, int attack, int defense);
+
+int main()
+{
+    int inputAction = 0,
+        numChar = 0;
+
+    string name[numChar];
+    int HP[numChar],
+        ATK[numChar],
+        DEF[numChar];
+
+    while (inputAction != 4)
+    {
+        PrintMainMenu();
+        cin >> inputAction;
+
+        while (inputAction > 4 || inputAction < 1)
+        {
+            cout << "Invalid input! Please enter a valid number for your choices:\n1 => Create OC(s) \n2 => Display OC(s)\n3 => Fighting simulation\n4 => EXIT program" << endl;
+            cin.ignore(1000, '\n');
+            cin >> inputAction;
+        }
+
+        if (inputAction == 1)
+        {
+            cout << "Alrite! Let's create your OC(s)!" << endl;
+            cout << "Let's start with how many character you want to create: ";
+
+            cin >> numChar;
+
+            while (numChar < 0)
+            {
+                cout << "Invalid input! Please enter how many character you want to create!: ";
+                cin >> numChar;
+            }
+
+            if (numChar == 0)
+            {
+                cout << "Oh, you don't want to create any character? That's fine! See ya next time!" << endl;
+
+                return 0;
+            }
+
+            cout << "Great! Now let's set up your character(s)!" << endl;
+
+            for (int i = 0; i < numChar; i++)
+            {
+                cout << "Let's start with the name of OC #" << i + 1 << ": ";
+                cin >> name[i];
+
+                cout << "How much HP would your OC #" << i + 1 << " have? ";
+                cin >> HP[i];
+
+                cout << "Let's see how strong OC #" << i + 1 << " is! Enter the attack powahhh: ";
+                cin >> ATK[i];
+
+                cout << "Finally, OC #" << i + 1 << " has to defend themself! Please enter their defense level: ";
+
+                cin >> DEF[i];
+            }
+
+            cout << "Great! Your OC(s) have been created!" << endl;
+        }
+
+        if (inputAction == 2 || inputAction == 'Y' || inputAction == 'y')
+        {
+            cout << "Here are your OC(s)!" << endl;
+
+            for (int i = 0; i < numChar; i++)
+            {
+                Character character;
+                character.setName(name[i]);
+                character.setHealth(HP[i]);
+                character.setAttack(ATK[i]);
+                character.setDefense(DEF[i]);
+
+                character.display();
+                DrawCharacter(name[i], HP[i], ATK[i], DEF[i]);
+            }
+        }
+
+        if (inputAction == 4)
+        {
+            cout << "Goodbye! See you next time!" << endl;
+            return 0;
+        }
+    }
+
+    return 0;
+}
+void PrintMainMenu()
+{
+    cout << "Hello! This is a character creator for your OCs! What would you like to do?" << endl;
+    cout << "Please enter number for your choices:\n1 => Create OC(s) \n2 => Display OC(s)\n3 => Fighting simulation\n4 => EXIT program" << endl;
+}
+
+void DrawCharacter(const string &name, int health, int attack, int defense)
+{
+    if (name == "SKIBIDI" || name == "skibidi")
+    {
+        cout << "       /]]]]]]   " << endl;
+        cout << " ____  (),\\/,)   " << endl;
+        cout << "| O= |||\\L∀_/   " << endl;
+        cout << "|____|_| |___  " << endl;
+        cout << " 0=(  (|_|)  ) " << endl;
+        cout << "    \\_______/  " << endl;
+        cout << "SKIBIDIDOPDOPDOP" << endl;
+    }
+
+    else
+    {
+        if (health > 100 && attack < health && defense < health)
+        {
+            cout << "       /\\/\\                " << endl;
+            cout << "      ( `v')               " << endl;
+            cout << "    /88888888\\===(TANKER)} " << endl;
+            cout << " /___________________\\      " << endl;
+            cout << " \\(@0_@0_@0_@0_@0_@0)/      " << endl;
+        }
+
+        if (attack > 100 && health < attack && defense < attack)
+        {
+            cout << "" << endl;
+            cout << "" << endl;
+            cout << "" << endl;
+            cout << "" << endl;
+        }
+
+        if (defense > 100 && health < defense && attack < defense)
+        {
+            cout << "" << endl;
+            cout << "" << endl;
+            cout << "" << endl;
+            cout << "" << endl;
+        }
+
+        else
+        {
+            cout << "" << endl;
+            cout << "" << endl;
+            cout << "" << endl;
+            cout << "" << endl;
+        }
+    }
+}
+
+void Character::display() const
+{
+    cout << "Name: " << name << endl;
+    cout << "Health: " << health << endl;
+    cout << "Attack: " << attack << endl;
+    cout << "Defense: " << defense << endl;
+}

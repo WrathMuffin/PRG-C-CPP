@@ -1,0 +1,6 @@
+NAME: CHARLEEN CHU
+COURSE: INFR2100U PROGRAMMING IN C/C++
+ASSIGNMENT 1: Character System
+DATE: FEB 15 2026
+
+Instead of screenshot I recorded it since the program was too long, I hope thats ok.

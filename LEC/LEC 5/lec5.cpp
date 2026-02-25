@@ -4,142 +4,148 @@
 
 using namespace std;
 
-int Factorial(int n) 
+int Factorial(int n)
 {
-    if (n == 0) 
+    if (n == 0)
     {
         return 1;
-    } 
-
-    else 
-    {
-        // n is multitpled by the next number 
-        // wwhich is n reduced by 1 each time
-        return n * Factorial(n - 1); 
     }
-}
-
-void StarFactorial(int n) 
-{
-    if (n == 0) 
-    {
-        return;
-    } 
 
     else
     {
-        for (int i = 0; i < n; i++) 
+        // n is multitpled by the next number
+        // wwhich is n reduced by 1 each time
+        return n * Factorial(n - 1);
+    }
+}
+
+void StarFactorial(int n)
+{
+    if (n == 0)
+    {
+        return;
+    }
+
+    else
+    {
+        for (int i = 0; i < n; i++)
         {
             cout << "*";
         }
-        
+
         StarFactorial(n - 1);
     }
 }
 
 void BackwardNumbers(int n)
 {
-    if (n == 0) 
+    if (n == 0)
     {
         return;
-    } 
+    }
 
-    else 
+    else
     {
         cout << n % 10 << " ";
-        BackwardNumbers(n/10);
+        BackwardNumbers(n / 10);
     }
 }
 
-void BinarySearch(int arr[], int size, int target)
+void BinarySearch(int arr[], int high, int low, int target)
 {
-    int middle = 0;
+    int middle;
+    middle = (low + high) / 2;
 
-    for (int i = 0; i < size; i++) 
+    // no numebr found
+    if (low > high)
     {
-        middle = arr[size / 2];
-        
-        if (middle != target) 
-        {
-            if (target < middle) 
-            {
-                size = size / 2;
-            } 
+        cout << "Your number isn't in array! Try again!" << endl;
+        return;
+    }
 
-            else 
-            {
-                arr = arr + size / 2;
-                size = size / 2;
-            }
-        }
+    if (arr[middle] == target)
+    {
+        cout << "The number has been identified at position " << middle << endl;
+        return;
+    }
 
-        else
-        {
-            cout << "The number has been identified at position " << size / 2 << endl;
-            break;
-        }
+    // search on left side
+    else if (target < arr[middle])
+    {
+        // this would shift high to the leeft side from midle
+        high = middle - 1;
+        BinarySearch(arr, high, low, target);
+    }
+
+    // search righte side
+    else if (target > arr[middle])
+    {
+        // shist the new low to teh right of middle
+        low = middle + 1;
+        BinarySearch(arr, high, low, target);
+    }
+
+    else
+    {
+        cout << "Something happended! Try again...?" << endl;
+        return;
     }
 }
 
-int main() 
+int main()
 {
-    int n;
-    int inputAction = 0;
-    
+    int n,
+        inputAction = 0,
+
+        arr[] = {-3, 1, 3, 5, 6, 7, 10, 13, 34, 67},
+        size = sizeof(arr) / sizeof(arr[0]),
+        high = size - 1,
+        low = 0;
+
     while (inputAction != 67)
     {
-        cout << "\n+-------------------------------+\n" << endl;
-        cout << "Enter problem number:\n1 => Factorial\n2 => Theres no problem for this...\n3 => Star Factorial\n4 => Backward Numbers\n67 => Exit\n\nYour choice: ";
+        cout << "\n+-------------------------------+\n\nEnter problem number:\n1 => The Factorial of...\n2 => Hip Hip Hurray\n3 => Starry Factorial Night\n4 => Reversus Numerus\n5 => Binary Search in a Pre-sorted Array\n67 => Exit Program\n\nYour choice => ";
         cin >> inputAction;
-        
+
         switch (inputAction)
         {
         case 1:
-        cout << "\n+-------------------------------+\n" << endl;
-        cout << "PROBLEM #1: Find the Factorial\nEnter an int for n: ";
+            cout << "\n+-------------------------------+\n\nPROBLEM #1: The Factorial of...\nEnter an int for n => ";
             cin >> n;
 
             cout << "Factorial of " << n << " is: " << Factorial(n) << endl;
             break;
 
-            case 2:
-            cout << "\n+-------------------------------+\n" << endl;
-            cout << "PROBLEM #2: The Problemless Problem\nTHERE IS NO PROBLEM REEEEEEEEEEEEEEEEEEE 67676767";
+        case 2:
+            cout << "\n+-------------------------------+\n\nPROBLEM #2: Hip Hip Hurray\nHIP HIP HURRAY";
             break;
 
         case 3:
-            cout << "\n+-------------------------------+\n" << endl;
-            cout << "PROBLEM #3: Starry Factorial Night\nEnter an int for n: "; 
+            cout << "\n+-------------------------------+\n\nPROBLEM #3: Starry Factorial Night\nEnter an int for n => ";
             cin >> n;
 
             StarFactorial(n);
             break;
-            
+
         case 4:
-            cout << "\n+-------------------------------+\n" << endl;
-            cout << "PROBLEM #4: Reversus Numerus\nEnter an int for n: ";
+            cout << "\n+-------------------------------+\n\nPROBLEM #4: Reversus Numerus\nEnter an int for n => ";
             cin >> n;
 
             BackwardNumbers(n);
-            break; 
+            break;
 
         case 5:
-            int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-            int size = sizeof(arr) / sizeof(arr[0]);
-        
-            cout << "\n+-------------------------------+\n" << endl;
-            cout << "PROBLEM #5: Binary Search\nEnter an int to search for: ";
+            cout << "\n+-------------------------------+\n\nPROBLEM #5: Binary Search in a Pre-sorted Array\nEnter an int to search for => ";
             cin >> n;
 
-            BinarySearch(arr, size, n);
+            BinarySearch(arr, high, low, n);
             break;
 
         case 67:
-            cout << "\n+-------------------------------+\n" << endl;
-            cout << "EXIT PROGRAM" << endl;
+            cout << "\n+-------------------------------+\n\nEXIT PROGRAM...\n";
             break;
         }
     }
-    
+
     return 0;
 }

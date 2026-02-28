@@ -21,20 +21,9 @@ int Factorial(int n)
 
 void StarFactorial(int n)
 {
-    if (n == 0)
-    {
-        return;
-    }
+    cout << "*";
 
-    else
-    {
-        for (int i = 0; i < n; i++)
-        {
-            cout << "*";
-        }
-
-        StarFactorial(n - 1);
-    }
+    StarFactorial(n - 1);
 }
 
 void BackwardNumbers(int n)

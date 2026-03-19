@@ -31,17 +31,18 @@ float totalWeight(Item items[], int count)
 
 int main()
 {
-    //    items[0].name = "sixseven dagger",
-    //    items[0].damage = 67,
-    //    items[0].weight = 67,
-    //
-    //    items[1].name = "john janitor's broom",
-    //    items[1].damage = 6790,
-    //    items[1].weight = 1,
-    //
-    //    items[2].name = "persona 5";
-    //    items[2].damage = 20;
-    //    items[2].weight = 16;
+    /*  items[0].name = "sixseven dagger",
+        items[0].damage = 67,
+        items[0].weight = 67,
+
+        items[1].name = "john janitor's broom",
+        items[1].damage = 6790,
+        items[1].weight = 1,
+
+        items[2].name = "persona 5";
+        items[2].damage = 20;
+        items[2].weight = 16;
+    */
 
     // well this is much cleanser... TIL ig
     Item items[3] =

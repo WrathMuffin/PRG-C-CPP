@@ -16,11 +16,11 @@ public:
     }
 
     // parametarizer
-    Player(string nom, int hp, int lvl)
+    Player(string _nom, int _hp, int _lvl)
     {
-        Name = nom;
-        HP = hp;
-        LVL = lvl;
+        Name = _nom;
+        HP = _hp;
+        LVL = _lvl;
     }
 
     void takeDamage(int amount)

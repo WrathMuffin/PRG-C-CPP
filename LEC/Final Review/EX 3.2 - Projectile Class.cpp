@@ -52,13 +52,13 @@ public:
 
     void status()
     {
-        cout << "Position (x,y): " << x << "" << y << "\n";
+        cout << "Position (x,y): " << x << ", " << y << "\n";
     }
 };
 
 int main()
 {
-    Bullet b(0, 0, 6.7, 6.9, true);
+    Bullet b(0, 0, 6, 7, true);
 
     for (int i = 1; i <= 5; i++)
     {
@@ -70,6 +70,7 @@ int main()
         }
 
         cout << "\nFrame: " << i << "\n";
+        b.status();
         // nPosition(x, y) : " << b.x << " " << b.y << "\n ";
     }
 
